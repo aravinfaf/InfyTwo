@@ -2,13 +2,11 @@ package com.app.infytwo.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.app.infytwo.R
 import com.app.infytwo.adapter.CountryAdapter
 import com.app.infytwo.data.CountryModel
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         showdata()
     }
@@ -33,7 +31,8 @@ class MainActivity : AppCompatActivity() {
     fun showdata() {
 
         mainViewmodel = ViewModelProviders.of(this).get(MainViewmodel::class.java)
-        mainViewmodel.getCountryData().observe(this, Observer {
+
+        mainViewmodel.country_data.observe(this, Observer {
 
             activityMainBinding.countryRecyclerview.layoutManager = LinearLayoutManager(this)
             countryAdapter =

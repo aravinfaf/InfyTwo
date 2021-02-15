@@ -14,6 +14,7 @@ public class MainViewmodel(application: Application) : AndroidViewModel(applicat
     val countrylist = ArrayList<CountryModel>()
     val livedata = MutableLiveData<ArrayList<CountryModel>>()
     val contexts = application.applicationContext
+
     init {
         livedata.postValue(fectingData())
     }
@@ -47,7 +48,6 @@ public class MainViewmodel(application: Application) : AndroidViewModel(applicat
 
     fun checkiSEmpty(data: CountryModel): Boolean = if (data.title != "null") true else false
 
-    fun getCountryData() : LiveData<ArrayList<CountryModel>> {
-        return livedata
-    }
+    val country_data : LiveData<ArrayList<CountryModel>>
+    get() = livedata
 }
