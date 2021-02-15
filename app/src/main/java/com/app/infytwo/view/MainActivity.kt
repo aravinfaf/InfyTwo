@@ -47,17 +47,4 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun setupUIadapter(countrylist: ArrayList<CountryModel>) {
-
-        activityMainBinding.countryRecyclerview.layoutManager = LinearLayoutManager(this)
-        countryAdapter =
-            CountryAdapter(countrylist)
-        activityMainBinding.countryRecyclerview.addItemDecoration(
-            DividerItemDecoration(
-                activityMainBinding.countryRecyclerview.context,
-                (activityMainBinding.countryRecyclerview.layoutManager as LinearLayoutManager).orientation
-            )
-        )
-        activityMainBinding.countryRecyclerview.adapter = countryAdapter
-    }
 }
