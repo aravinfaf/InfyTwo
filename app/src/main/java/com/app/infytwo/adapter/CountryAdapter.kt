@@ -19,22 +19,8 @@ class CountryAdapter(private val countrylist: ArrayList<CountryModel>) :
     class CountryViewHolder(val binding: AdapterLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Any) {
-
             binding.setVariable(BR.country,data)
             binding.executePendingBindings()
-
-//            if (countryModel.title != null) {
-//                itemView.textViewTitle.text = countryModel.title
-//                itemView.textViewDescription.text = countryModel.description
-//
-//            Log.e("Ss",countryModel.imageHref.toString())
-//                Glide
-//                    .with(itemView.context)
-//                    .load(countryModel.imageHref)
-//                    .fitCenter()
-////                    .error(R.drawable.ic_launcher_background)
-//                    .into(itemView.imageViewAvatar);
-//                  }
         }
     }
 
@@ -48,5 +34,6 @@ class CountryAdapter(private val countrylist: ArrayList<CountryModel>) :
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         holder.bind(countrylist[position])
+        Log.e("AA",countrylist[0].title)
     }
 }

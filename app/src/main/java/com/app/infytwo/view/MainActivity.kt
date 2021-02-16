@@ -25,19 +25,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        setUpViewmodel()
         showdata()
     }
 
     fun showdata() {
-        val factory = (this.applicationContext as MyApp).viewModelFactory
-        mainViewmodel = ViewModelProviders.of(this,factory).get(MainViewmodel::class.java)
 
         mainViewmodel.countryLiveData.observe(this, Observer {
 
-            Log.e("SS",it.size.toString())
             activityMainBinding.countryRecyclerview.layoutManager = LinearLayoutManager(this)
             countryAdapter =
-                CountryAdapter(it)
+                CountryAdapter(it as ArrayList<CountryModel>)
             activityMainBinding.countryRecyclerview.addItemDecoration(
                 DividerItemDecoration(
                     activityMainBinding.countryRecyclerview.context,
@@ -45,6 +43,12 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             activityMainBinding.countryRecyclerview.adapter = countryAdapter
+            countryAdapter.notifyDataSetChanged()
         })
     }
+    fun setUpViewmodel(){
+        val factory = (this.applicationContext as MyApp).viewModelFactory
+        mainViewmodel = ViewModelProviders.of(this,factory).get(MainViewmodel::class.java)
+    }
+
 }

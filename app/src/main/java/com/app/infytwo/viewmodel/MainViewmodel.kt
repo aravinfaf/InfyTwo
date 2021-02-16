@@ -1,14 +1,12 @@
 package com.app.infytwo.viewmodel
 
-import androidx.lifecycle.LiveData
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.app.infytwo.data.CountryModel
 import com.app.infytwo.repository.CountryRepo
-import org.json.JSONArray
-import org.json.JSONObject
 
-public class MainViewmodel(private val countryRepo: CountryRepo) : ViewModel() {
+class MainViewmodel(private val countryRepo: CountryRepo) : ViewModel() {
 
     var countryLiveData = MutableLiveData<ArrayList<CountryModel>>()
 
@@ -18,6 +16,7 @@ public class MainViewmodel(private val countryRepo: CountryRepo) : ViewModel() {
 
     private fun getAllData(){
         val data = countryRepo.fectingData()
-        countryLiveData.postValue(data)
+        Log.e("EE",data!!.size.toString())
+        countryLiveData.value=data
     }
 }
