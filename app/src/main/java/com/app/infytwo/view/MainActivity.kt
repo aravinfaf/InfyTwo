@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.app.infytwo.BuildConfig
 import com.app.infytwo.R
 import com.app.infytwo.adapter.CountryAdapter
 import com.app.infytwo.application.MyApp
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        //To get the protected API key
+        val apikey = BuildConfig.API_KEY // googlemap_key
 
         setUpViewmodel()
         showdata()
